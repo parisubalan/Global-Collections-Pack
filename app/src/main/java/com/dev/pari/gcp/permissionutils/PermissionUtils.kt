@@ -64,7 +64,7 @@ object PermissionUtils {
     }
 
     fun isCameraPermissionEnable(context: Context): Boolean{
-       return ContextCompat.checkSelfPermission(context,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+        return ContextCompat.checkSelfPermission(context,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
     }
 
     fun raiseCameraPermission(activity: Activity){
