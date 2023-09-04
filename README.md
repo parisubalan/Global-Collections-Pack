@@ -1,1 +1,1 @@
-# global_collections
+# Global Collections
