@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Global Collection Pack</string>
+
+    <string name="lbl_yes">Yes</string>
+    <string name="lbl_ok">Okay</string>
+    <string name="lbl_no">No</string>
+</resources>
