@@ -105,19 +105,23 @@ class LocationUtils(private val mContext: Context, private val mActivity: Activi
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getCurrentLocation()
             } else if (PermissionUtils.isLocationPermissionCancelled(mActivity!!))
-                Toast.makeText(mContext, "Permission was Denied", Toast.LENGTH_SHORT).show()
+                utils.shortToast("Permission was Denied")
             else {
-                Toast.makeText(mContext, "Please Turn on location", Toast.LENGTH_SHORT).show()
-                utils.alertOkType(mContext,"Alert!", "Must need enable location permission",object : AlertListener{
-                    override fun actionYes() {
+                utils.shortToast("Please Turn on location")
+                utils.alertOkType(
+                    mContext,
+                    "Alert!",
+                    "Must need enable location permission",
+                    object : AlertListener {
+                        override fun actionYes() {
 
-                    }
+                        }
 
-                    override fun actionNo() {
+                        override fun actionNo() {
 
-                    }
+                        }
 
-                })
+                    })
             }
         }
     }
@@ -127,16 +131,20 @@ class LocationUtils(private val mContext: Context, private val mActivity: Activi
             if (resultCode == RESULT_OK)
                 getLatAndLong()
             else
-                utils.alertOkType(mContext,"Gprs Alert", "Must enable gprs permission",object : AlertListener{
-                    override fun actionYes() {
+                utils.alertOkType(
+                    mContext,
+                    "Gprs Alert",
+                    "Must enable gprs permission",
+                    object : AlertListener {
+                        override fun actionYes() {
 
-                    }
+                        }
 
-                    override fun actionNo() {
+                        override fun actionNo() {
 
-                    }
+                        }
 
-                })
+                    })
         }
     }
 
