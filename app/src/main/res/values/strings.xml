@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Global Collection Pack</string>
 
+    <string name="facebook_app_id">631002302502157</string>
+    <string name="fb_login_protocol_scheme">fb631002302502157</string>
+    <string name="facebook_client_token">5aab3f8a669b4060c50bb67b2402527b</string>
+
     <string name="lbl_yes">Yes</string>
     <string name="lbl_ok">Okay</string>
     <string name="lbl_no">No</string>

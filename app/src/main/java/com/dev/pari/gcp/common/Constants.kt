@@ -11,10 +11,10 @@ object Constants {
     const val NOTIFICATION_PERMISSION_CODE = 16
 
     // Functions control Code
-    const val isInAppUpdateEnabled = false
+    const val isInAppUpdateEnabled = true
     const val isInAppReviewEnabled = false
     const val needFlexibleUpdate = false
-    const val needImmediateUpdate = false
+    const val needImmediateUpdate = true
     const val DAYS_FOR_FLEXIBLE_UPDATE = 5
 
 }

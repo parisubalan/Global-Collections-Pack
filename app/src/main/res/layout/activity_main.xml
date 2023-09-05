@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,51 +13,52 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvLatLong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:gravity="center"
-            android:text="Lat Long : " />
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:text="Utils Pack's"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_25sdp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/getLatLongBtn"
+            android:id="@+id/locationBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get Lat Long"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:text="Location Pack"
             android:textAllCaps="false" />
 
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="5dp"
-            android:gravity="center"
-            android:text="Address : " />
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/getAddressBtn"
+            android:id="@+id/inAppUpdateBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get Address"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:text="In App Update"
             android:textAllCaps="false" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvNewLatLang"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/inAppReviewBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="5dp"
-            android:gravity="center"
-            android:text="Lat Lang From Address : " />
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:text="In App Review"
+            android:textAllCaps="false" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/getLatLangFromAddressBtn"
+            android:id="@+id/socialMediaLoginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get Lat Lang from Address"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:text="Social Media Login"
+            android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/fileUploadBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:text="File Upload"
             android:textAllCaps="false" />
 
     </LinearLayout>

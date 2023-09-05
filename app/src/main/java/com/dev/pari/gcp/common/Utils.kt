@@ -3,20 +3,26 @@ package com.dev.pari.gcp.common
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.ContentValues
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Build
 import android.text.format.DateFormat
+import android.util.Base64
+import android.util.Log
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
 import com.dev.pari.gcp.R
-import com.dev.pari.gcp.interfaces.AlertListener
+import com.dev.pari.gcp.utils.interfaces.AlertListener
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -157,6 +163,25 @@ class Utils(private val context: Context) {
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
         dialog.show()
+    }
+
+    fun printHashKey(pContext: Context) {
+        try {
+            val info = pContext.packageManager.getPackageInfo(
+                pContext.packageName, PackageManager.GET_SIGNATURES
+            )
+            for (signature in info.signatures) {
+                val md = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                val hashKey = String(Base64.encode(md.digest(), 0))
+                println("---->>>>> printHashKey() Hash Key: $hashKey")
+                Log.i(ContentValues.TAG, "printHashKey() Hash Key: $hashKey")
+            }
+        } catch (e: NoSuchAlgorithmException) {
+            Log.e(ContentValues.TAG, "printHashKey()", e)
+        } catch (e: Exception) {
+            Log.e(ContentValues.TAG, "printHashKey()", e)
+        }
     }
 
 }
