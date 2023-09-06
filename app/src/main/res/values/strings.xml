@@ -1,11 +1,26 @@
 <resources>
     <string name="app_name">Global Collection Pack</string>
 
-    <string name="facebook_app_id">631002302502157</string>
-    <string name="fb_login_protocol_scheme">fb631002302502157</string>
-    <string name="facebook_client_token">5aab3f8a669b4060c50bb67b2402527b</string>
+    <string name="facebook_app_id">1037929883905070</string>
+    <string name="fb_login_protocol_scheme">fb1037929883905070</string>
+    <string name="facebook_client_token">56789</string>
 
     <string name="lbl_yes">Yes</string>
     <string name="lbl_ok">Okay</string>
     <string name="lbl_no">No</string>
+    <string name="lblFbLogin">Facebook Login</string>
+    <string name="lblFbLogout">Facebook Logout</string>
+    <string name="lblGmailLogout">Gmail Logout</string>
+    <string name="lblGmailLogin">Gmail Login</string>
+    <string name="lblSocialMediaLogin">Social Media Login Utils</string>
+    <string name="lblGoogleLocation">Google Location Utils</string>
+    <string name="lblGetCurrentLatLong">Get Current Lat Long</string>
+    <string name="lblGetAddress">Get Address from lat long</string>
+    <string name="lblGetLatLongFromAddress">Get lat long from address</string>
+    <string name="lblServiceUtils">Service Utils Pack\'s</string>
+    <string name="lblLocation">Location Service</string>
+    <string name="lblInAppUpdate">In App Update</string>
+    <string name="lblInAppReview">In App Review</string>
+    <string name="lblSocialLogin">Social Media Login</string>
+    <string name="lblFileUpload">File Upload</string>
 </resources>

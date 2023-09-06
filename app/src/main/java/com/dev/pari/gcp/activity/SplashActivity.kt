@@ -1,27 +1,19 @@
 package com.dev.pari.gcp.activity
 
 import android.annotation.SuppressLint
-import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Base64
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.pari.gcp.common.Constants
 import com.dev.pari.gcp.common.Utils
 import com.dev.pari.gcp.databinding.ActivitySplashBinding
-import com.dev.pari.gcp.utils.inappupdate.InAppUpdateCallBack
-import com.dev.pari.gcp.utils.inappupdate.InAppUpdateManager
+import com.dev.pari.gcp.service_utils.inappupdate.InAppUpdateManager
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 import java.util.concurrent.TimeUnit
 
 @SuppressLint("CustomSplashScreen")
@@ -43,7 +35,7 @@ class SplashActivity : AppCompatActivity() {
         utils.printHashKey(this)
         changeActivity()
         if (Constants.isInAppUpdateEnabled) {
-            InAppUpdateManager(this, object : InAppUpdateCallBack {
+            InAppUpdateManager(this, object : InAppUpdateManager.InAppUpdateCallBack {
                 override fun isNotUpdateAvailable() {
                     changeActivity()
                 }

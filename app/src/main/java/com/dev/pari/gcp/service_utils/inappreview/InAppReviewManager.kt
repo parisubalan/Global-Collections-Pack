@@ -1,4 +1,4 @@
-package com.dev.pari.gcp.utils.inappreview
+package com.dev.pari.gcp.service_utils.inappreview
 
 import android.app.Activity
 import com.dev.pari.gcp.common.Constants
@@ -52,5 +52,12 @@ class InAppReviewManager(context: Activity, inAppReviewCallBack: InAppReviewCall
             e.printStackTrace()
             println("--->>>> In App Review Exception : " + e.message)
         }
+    }
+
+    interface InAppReviewCallBack {
+        fun isNotReview()
+        fun alreadyReviewed()
+        fun postReviewSuccess()
+        fun postReviewFailure()
     }
 }

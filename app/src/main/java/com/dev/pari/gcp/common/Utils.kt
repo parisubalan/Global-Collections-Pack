@@ -20,7 +20,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
 import com.dev.pari.gcp.R
-import com.dev.pari.gcp.utils.interfaces.AlertListener
+import com.dev.pari.gcp.service_utils.interfaces.AlertListener
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.text.DecimalFormat

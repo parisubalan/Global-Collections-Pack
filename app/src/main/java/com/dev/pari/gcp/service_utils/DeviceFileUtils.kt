@@ -1,4 +1,4 @@
-package com.dev.pari.gcp.utils
+package com.dev.pari.gcp.service_utils
 
 import android.annotation.SuppressLint
 import android.content.ContentUris

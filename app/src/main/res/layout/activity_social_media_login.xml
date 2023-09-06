@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/BoldText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:text="@string/lblSocialMediaLogin"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_18ssp" />
 
     <LinearLayout
+        android:id="@+id/gmailDetailLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/googleProfileImage"
@@ -15,44 +30,69 @@
             android:layout_height="@dimen/_100sdp"
             android:layout_gravity="center" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvProfileName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="Name"
             android:layout_gravity="center"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_13sdp" />
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvProfileEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="Email"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_13sdp" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProfileName"
+                style="@style/MediumText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/_5sdp"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/googleSignBtn"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:textAllCaps="false" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProfileEmail"
+                style="@style/MediumText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/_5sdp"
+                android:singleLine="true"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/googleSignOutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="Logout"
-            android:visibility="gone"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_13sdp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/googleSignBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:text="@string/lblGmailLogin"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/googleSignOutBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:text="@string/lblGmailLogout"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/fbDetailLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/facebookProfileImage"
@@ -60,37 +100,59 @@
             android:layout_height="@dimen/_100sdp"
             android:layout_gravity="center" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvFacebookProfileName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="Name"
-            android:layout_gravity="center"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_13sdp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvFacebookProfileEmail"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="Email"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_13sdp" />
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/faceBookLoginBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:text="Facebook Login"
-            android:textAllCaps="false"
-            android:layout_marginBottom="30dp" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFacebookProfileName"
+                style="@style/MediumText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/_5sdp"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFacebookProfileEmail"
+                style="@style/MediumText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/_5sdp"
+                android:singleLine="true"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+        </LinearLayout>
     </LinearLayout>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/faceBookLoginBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:text="@string/lblFbLogin"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
-</RelativeLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/faceBookLogoutBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:text="@string/lblFbLogout"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:visibility="gone" />
+
+</LinearLayout>

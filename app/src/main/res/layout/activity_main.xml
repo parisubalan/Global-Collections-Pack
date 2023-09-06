@@ -1,66 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/BoldText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:text="@string/lblServiceUtils"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_25sdp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="Utils Pack's"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_25sdp" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/locationBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:text="@string/lblLocation"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/locationBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="Location Pack"
-            android:textAllCaps="false" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/inAppUpdateBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:text="@string/lblInAppUpdate"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/inAppUpdateBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="In App Update"
-            android:textAllCaps="false" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/inAppReviewBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:text="@string/lblInAppReview"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/inAppReviewBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="In App Review"
-            android:textAllCaps="false" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/socialMediaLoginBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:text="@string/lblSocialLogin"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/socialMediaLoginBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="Social Media Login"
-            android:textAllCaps="false" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fileUploadBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:text="@string/lblFileUpload"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/fileUploadBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="File Upload"
-            android:textAllCaps="false" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

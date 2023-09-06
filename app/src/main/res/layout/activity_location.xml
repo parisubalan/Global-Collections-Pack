@@ -1,64 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/BoldText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:text="@string/lblGoogleLocation"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20ssp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLatLong"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:visibility="gone"
+        android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvLatLong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:gravity="center"
-            android:text="Lat Long : " />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/getLatLongBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Get Current Lat Long"
-            android:textAllCaps="false" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/getLatLongBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblGetCurrentLatLong"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="5dp"
-            android:gravity="center"
-            android:text="Address : " />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAddress"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/getAddressBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Get Address from lat long"
-            android:textAllCaps="false" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/getAddressBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblGetAddress"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvNewLatLang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="5dp"
-            android:gravity="center"
-            android:text="Lat Lang From Address : " />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNewLatLang"
+        style="@style/MediumText"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:gravity="center"
+        android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/getLatLangFromAddressBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Get lat long from address"
-            android:textAllCaps="false" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/getLatLangFromAddressBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblGetLatLongFromAddress"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

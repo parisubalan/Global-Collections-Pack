@@ -9,6 +9,8 @@ object Constants {
     const val GPRS_PERMISSION_CODE = 14
     const val EXTERNAL_STORAGE_PERMISSION_CODE = 15
     const val NOTIFICATION_PERMISSION_CODE = 16
+    const val GOOGLE_SIGN_IN_CODE = 17
+    const val FACEBOOK_SIGN_IN_CODE = 64206
 
     // Functions control Code
     const val isInAppUpdateEnabled = true

@@ -1,4 +1,4 @@
-package com.dev.pari.gcp.utils.permissionutils
+package com.dev.pari.gcp.service_utils.permissionutils
 
 import android.Manifest
 import android.app.Activity
@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dev.pari.gcp.common.Constants
-import com.dev.pari.gcp.utils.location.GprsPermissionCallBack
+import com.dev.pari.gcp.service_utils.location.GprsPermissionCallBack
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.SettingsClient

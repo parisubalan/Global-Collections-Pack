@@ -7,10 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dev.pari.gcp.R
 import com.dev.pari.gcp.common.Utils
 import com.dev.pari.gcp.databinding.ActivityMainBinding
-import com.dev.pari.gcp.utils.inappreview.InAppReviewCallBack
-import com.dev.pari.gcp.utils.inappreview.InAppReviewManager
-import com.dev.pari.gcp.utils.inappupdate.InAppUpdateCallBack
-import com.dev.pari.gcp.utils.inappupdate.InAppUpdateManager
+import com.dev.pari.gcp.service_utils.inappreview.InAppReviewManager
+import com.dev.pari.gcp.service_utils.inappupdate.InAppUpdateManager
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.inAppUpdateBtn -> {
-                InAppUpdateManager(this, object : InAppUpdateCallBack {
+                InAppUpdateManager(this, object : InAppUpdateManager.InAppUpdateCallBack {
                     override fun isNotUpdateAvailable() {
                         println("--->>>> isNotUpdateAvailable")
                     }
@@ -63,7 +61,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.inAppReviewBtn -> {
-                InAppReviewManager(this, object : InAppReviewCallBack {
+                InAppReviewManager(this, object : InAppReviewManager.InAppReviewCallBack {
                     override fun isNotReview() {
                         println("--->>>> isNotReview")
                     }

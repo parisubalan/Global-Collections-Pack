@@ -3,9 +3,10 @@ package com.dev.pari.gcp.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.pari.gcp.databinding.ActivityLocationBinding
-import com.dev.pari.gcp.utils.location.LocationUtils
+import com.dev.pari.gcp.service_utils.location.LocationUtils
 
 class LocationActivity : AppCompatActivity() {
 
@@ -33,6 +34,7 @@ class LocationActivity : AppCompatActivity() {
                 if (it != null) {
                     lat = it.latitude
                     long = it.longitude
+                    binding.tvLatLong.visibility = ViewGroup.VISIBLE
                     binding.tvLatLong.text =
                         "Latitude : " + it.latitude + "  Longitude : " + it.longitude
                     println("-->>> Latitude : ${it.latitude}  Longitude : ${it.longitude}")
@@ -43,6 +45,7 @@ class LocationActivity : AppCompatActivity() {
             if (lat != 0.0 && long != 0.0) {
                 locationUtils.getAddressFromLatLong(lat, long).observe(this) {
                     address = it
+                    binding.tvAddress.visibility = ViewGroup.VISIBLE
                     binding.tvAddress.text = "Address : $it"
                 }
             }
@@ -50,6 +53,7 @@ class LocationActivity : AppCompatActivity() {
         binding.getLatLangFromAddressBtn.setOnClickListener {
             if (address.isNotEmpty()) {
                 locationUtils.getLatLongFromAddress(address).observe(this) {
+                    binding.tvNewLatLang.visibility = ViewGroup.VISIBLE
                     binding.tvNewLatLang.text =
                         "Lat Lang From Address :  Lat : ${it.latitude}   Longitude : ${it.longitude}"
                 }

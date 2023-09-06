@@ -46,7 +46,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.FaceBookLoginActivity"
+            android:name=".activity.FacebookLoginActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
@@ -75,6 +75,19 @@
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+
     </application>
 
+    <queries>
+        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
+        <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
+    </queries>
+
 </manifest>
+
+    <!--You're calling logging in Facebook with an activity supports androidx activity result APIs. Please follow our document to upgrade to new APIs to avoid overriding onActivityResult().
+    2023-09-06 16:06:46.570  9701-9701  com.facebo...veProtocol                                      W  Apps that target Android API 30+ (Android 11+) cannot call Facebook native apps unless the package visibility needs are declared. Please follow https://developers.facebook.com/docs/android/troubleshooting/#faq_267321845055988 to make the declaration.
+    2023-09-06 16:06:46.570  9701-9810  com.facebo...veProtocol                                      W  Apps that target Android API 30+ (Android 11+) cannot call Facebook native apps unless the package visibility needs are declared. Please follow https://developers.facebook.com/docs/android/troubleshooting/#faq_267321845055988 to make the declaration.
+    2023-09-06 16:06:46.601  9701-9701  ziparchive                                                   W  Unable to open '/data/app/~~vKlskufU47QtXzjVC8_IwA==/com.google.android.trichromelibrary_584509231-ajdiSk5OQgNDnKPI2ooKLg==/base.dm': No such file or directory
+    2023-09-06 16:06:46.601  9701-9701  ziparchive                                                   W  Unable to open '/data/app/~~vKlskufU47QtXzjVC8_IwA==/com.google.android.trichromelibrary_584509231-ajdiSk5OQgNDnKPI2ooKLg==/base.dm': No such file or directory
+    2023-09-06 16:06:46.601  9701-9701  om.dev.pari.gcp                                              W  Entry not found-->

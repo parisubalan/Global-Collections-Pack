@@ -1,4 +1,4 @@
-package com.dev.pari.gcp.utils.location
+package com.dev.pari.gcp.service_utils.location
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -16,8 +16,8 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.dev.pari.gcp.common.Constants
 import com.dev.pari.gcp.common.Utils
-import com.dev.pari.gcp.utils.interfaces.AlertListener
-import com.dev.pari.gcp.utils.permissionutils.PermissionUtils
+import com.dev.pari.gcp.service_utils.interfaces.AlertListener
+import com.dev.pari.gcp.service_utils.permissionutils.PermissionUtils
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -254,5 +254,4 @@ class LocationUtils(private val mContext: Context, private val mActivity: Activi
     fun onDestroy() {
         fusedLocationClient.removeLocationUpdates(locationCallback)
     }
-
 }

@@ -6,7 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.pari.gcp.common.Utils
 import com.dev.pari.gcp.databinding.ActivityFileUploadBinding
-import com.dev.pari.gcp.utils.DeviceFileUtils
+import com.dev.pari.gcp.service_utils.DeviceFileUtils
 import java.io.File
 
 class FileUploadActivity : AppCompatActivity() {

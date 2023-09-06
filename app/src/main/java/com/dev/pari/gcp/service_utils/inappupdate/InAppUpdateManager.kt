@@ -1,4 +1,4 @@
-package com.dev.pari.gcp.utils.inappupdate
+package com.dev.pari.gcp.service_utils.inappupdate
 
 import android.content.Context
 import androidx.activity.result.contract.ActivityResultContracts
@@ -117,4 +117,11 @@ class InAppUpdateManager(context: Context, inAppUpdateCallBack: InAppUpdateCallB
             else
                 updateCallBack.inAppUpdateFailure()
         }
+
+    interface InAppUpdateCallBack {
+        fun isNotUpdateAvailable()
+        fun isUpdateAvailable()
+        fun inAppUpdateSuccess()
+        fun inAppUpdateFailure()
+    }
 }
