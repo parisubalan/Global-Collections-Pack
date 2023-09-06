@@ -12,7 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 
-class GoogleLogin(private val mContext: Context, private val mActivity: Activity) {
+class GoogleLoginUtils(private val mContext: Context, private val mActivity: Activity) {
 
     private lateinit var googleSignInOpt: GoogleSignInOptions
     private lateinit var googleSignClient: GoogleSignInClient

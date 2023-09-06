@@ -11,13 +11,13 @@ import com.dev.pari.gcp.common.Constants
 import com.dev.pari.gcp.common.Utils
 import com.dev.pari.gcp.databinding.ActivitySocialMediaLoginBinding
 import com.dev.pari.gcp.service_utils.socialmedialogin.FaceBookLoginUtils
-import com.dev.pari.gcp.service_utils.socialmedialogin.GoogleLogin
+import com.dev.pari.gcp.service_utils.socialmedialogin.GoogleLoginUtils
 
 
 class SocialMediaLoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivitySocialMediaLoginBinding
-    private lateinit var googleLogin: GoogleLogin
+    private lateinit var googleLoginUtils: GoogleLoginUtils
     private lateinit var facebookLogin: FaceBookLoginUtils
     private lateinit var utils: Utils
 
@@ -30,7 +30,7 @@ class SocialMediaLoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initialization() {
         utils = Utils(this)
-        googleLogin = GoogleLogin(this, this)
+        googleLoginUtils = GoogleLoginUtils(this, this)
         facebookLogin = FaceBookLoginUtils(this)
 
         binding.googleSignBtn.setOnClickListener(this)
@@ -38,7 +38,7 @@ class SocialMediaLoginActivity : AppCompatActivity(), View.OnClickListener {
         binding.faceBookLoginBtn.setOnClickListener(this)
         binding.faceBookLogoutBtn.setOnClickListener(this)
 
-        googleLogin.googleSignInResponse.observe(this) {
+        googleLoginUtils.googleSignInResponse.observe(this) {
             if (it != null)
                 if (it.loginStatus) {
                     binding.gmailDetailLay.visibility = ViewGroup.VISIBLE
@@ -84,7 +84,7 @@ class SocialMediaLoginActivity : AppCompatActivity(), View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             Constants.GOOGLE_SIGN_IN_CODE -> {
-                googleLogin.onActivityResult(requestCode, resultCode, data)
+                googleLoginUtils.onActivityResult(requestCode, resultCode, data)
             }
 
             Constants.FACEBOOK_SIGN_IN_CODE -> {
@@ -96,14 +96,14 @@ class SocialMediaLoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.googleSignBtn -> {
-                if (googleLogin.ifAlreadyLogin()) {
-                    googleLogin.getAccountDetails()
+                if (googleLoginUtils.ifAlreadyLogin()) {
+                    googleLoginUtils.getAccountDetails()
                 } else
-                    googleLogin.login()
+                    googleLoginUtils.login()
             }
 
             R.id.googleSignOutBtn -> {
-                googleLogin.signOutCurrentLogin()
+                googleLoginUtils.signOutCurrentLogin()
             }
 
             R.id.faceBookLoginBtn -> {
