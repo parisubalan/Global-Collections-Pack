@@ -23,4 +23,9 @@
     <string name="lblInAppReview">In App Review</string>
     <string name="lblSocialLogin">Social Media Login</string>
     <string name="lblFileUpload">File Upload</string>
+    <string name="lblAndroidService">Android Service</string>
+    <string name="lblBackgroundService">Background Service</string>
+    <string name="lblStartBgService">Start Service</string>
+    <string name="lblStopBgService">Stop Service</string>
+    <string name="lblForegroundService">Foreground Service</string>
 </resources>

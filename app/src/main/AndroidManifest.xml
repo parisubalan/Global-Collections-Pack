@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -46,7 +47,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.FacebookLoginActivity"
+            android:name=".activity.AndroidServiceActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
@@ -56,25 +57,33 @@
             android:screenOrientation="portrait" />
 
 
-
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
 
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
+
+        <service android:name=".service_utils.android_service.SimpleBackgroundService" />
+        <service android:name=".service_utils.android_service.SimpleForegroundService" />
 
     </application>
 
@@ -84,10 +93,3 @@
     </queries>
 
 </manifest>
-
-    <!--You're calling logging in Facebook with an activity supports androidx activity result APIs. Please follow our document to upgrade to new APIs to avoid overriding onActivityResult().
-    2023-09-06 16:06:46.570  9701-9701  com.facebo...veProtocol                                      W  Apps that target Android API 30+ (Android 11+) cannot call Facebook native apps unless the package visibility needs are declared. Please follow https://developers.facebook.com/docs/android/troubleshooting/#faq_267321845055988 to make the declaration.
-    2023-09-06 16:06:46.570  9701-9810  com.facebo...veProtocol                                      W  Apps that target Android API 30+ (Android 11+) cannot call Facebook native apps unless the package visibility needs are declared. Please follow https://developers.facebook.com/docs/android/troubleshooting/#faq_267321845055988 to make the declaration.
-    2023-09-06 16:06:46.601  9701-9701  ziparchive                                                   W  Unable to open '/data/app/~~vKlskufU47QtXzjVC8_IwA==/com.google.android.trichromelibrary_584509231-ajdiSk5OQgNDnKPI2ooKLg==/base.dm': No such file or directory
-    2023-09-06 16:06:46.601  9701-9701  ziparchive                                                   W  Unable to open '/data/app/~~vKlskufU47QtXzjVC8_IwA==/com.google.android.trichromelibrary_584509231-ajdiSk5OQgNDnKPI2ooKLg==/base.dm': No such file or directory
-    2023-09-06 16:06:46.601  9701-9701  om.dev.pari.gcp                                              W  Entry not found-->

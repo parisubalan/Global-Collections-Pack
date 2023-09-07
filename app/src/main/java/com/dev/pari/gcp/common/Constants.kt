@@ -11,6 +11,8 @@ object Constants {
     const val NOTIFICATION_PERMISSION_CODE = 16
     const val GOOGLE_SIGN_IN_CODE = 17
     const val FACEBOOK_SIGN_IN_CODE = 64206
+    const val NOTIFICATION_ID = "notification_id"
+    const val NOTIFICATION_CHANNEL_NAME = "notification_channel"
 
     // Functions control Code
     const val isInAppUpdateEnabled = true

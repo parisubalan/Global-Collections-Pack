@@ -1,12 +1,14 @@
 package com.dev.pari.gcp.activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.pari.gcp.R
 import com.dev.pari.gcp.common.Utils
 import com.dev.pari.gcp.databinding.ActivityMainBinding
+import com.dev.pari.gcp.service_utils.android_service.SimpleForegroundService
 import com.dev.pari.gcp.service_utils.inappreview.InAppReviewManager
 import com.dev.pari.gcp.service_utils.inappupdate.InAppUpdateManager
 
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.inAppUpdateBtn.setOnClickListener(this)
         binding.inAppReviewBtn.setOnClickListener(this)
         binding.socialMediaLoginBtn.setOnClickListener(this)
+        binding.androidServiceBtn.setOnClickListener(this)
         binding.fileUploadBtn.setOnClickListener(this)
     }
 
@@ -84,6 +87,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 utils.moveNextActivity(
                     this,
                     Intent(this, SocialMediaLoginActivity::class.java),
+                    false
+                )
+            }
+
+            R.id.androidServiceBtn -> {
+                utils.moveNextActivity(
+                    this,
+                    Intent(this, AndroidServiceActivity::class.java),
                     false
                 )
             }

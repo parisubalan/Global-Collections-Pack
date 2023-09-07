@@ -59,6 +59,16 @@
         android:textColor="@color/black" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/androidServiceBtn"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:text="@string/lblAndroidService"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/fileUploadBtn"
         style="@style/MediumText"
         android:layout_width="wrap_content"
