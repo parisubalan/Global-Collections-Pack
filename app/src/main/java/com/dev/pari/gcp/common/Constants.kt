@@ -19,6 +19,7 @@ object Constants {
     const val isInAppReviewEnabled = false
     const val needFlexibleUpdate = false
     const val needImmediateUpdate = true
+    const val IN_APP_UPDATE_REQ_CODE = 110
     const val DAYS_FOR_FLEXIBLE_UPDATE = 5
 
 }

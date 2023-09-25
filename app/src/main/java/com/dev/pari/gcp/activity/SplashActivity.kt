@@ -10,6 +10,7 @@ import com.dev.pari.gcp.databinding.ActivitySplashBinding
 import com.dev.pari.gcp.service_utils.inappupdate.InAppUpdateManager
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
+import com.intuit.sdp.BuildConfig
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -17,11 +18,13 @@ import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 @SuppressLint("CustomSplashScreen")
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity(), InAppUpdateManager.InAppUpdateCallBack {
 
     private lateinit var binding: ActivitySplashBinding
     private lateinit var utils: Utils
     private lateinit var splashTimer: CompositeDisposable
+    private lateinit var inAppUpdateManager: InAppUpdateManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
@@ -33,27 +36,8 @@ class SplashActivity : AppCompatActivity() {
         splashTimer = CompositeDisposable()
         utils = Utils(this)
         utils.printHashKey(this)
+        inAppUpdateManager = InAppUpdateManager(this, this)
         changeActivity()
-        if (Constants.isInAppUpdateEnabled) {
-            InAppUpdateManager(this, object : InAppUpdateManager.InAppUpdateCallBack {
-                override fun isNotUpdateAvailable() {
-                    changeActivity()
-                }
-
-                override fun isUpdateAvailable() {
-
-                }
-
-                override fun inAppUpdateSuccess() {
-                    changeActivity()
-                }
-
-                override fun inAppUpdateFailure() {
-
-                }
-
-            }).checkUpdateAvailable()
-        }
     }
 
     private fun changeActivity() {
@@ -64,9 +48,17 @@ class SplashActivity : AppCompatActivity() {
                     if (it.toString() == "2") {
                         splashTimer.dispose()
                         println("--->>>>> Final Count : $it")
-                        utils.moveNextActivity(this, Intent(this, MainActivity::class.java), true)
-                        FacebookSdk.sdkInitialize(applicationContext);
-                        AppEventsLogger.activateApp(application);
+                        if (Constants.isInAppUpdateEnabled)
+                            inAppUpdateManager.checkUpdateAvailable()
+                        else {
+                            utils.moveNextActivity(
+                                this,
+                                Intent(this, MainActivity::class.java),
+                                true
+                            )
+                            FacebookSdk.sdkInitialize(applicationContext);
+                            AppEventsLogger.activateApp(application);
+                        }
                     }
                     println("--->>>>> Count : $it")
                 }
@@ -81,6 +73,21 @@ class SplashActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         splashTimer.dispose()
+    }
+
+    override fun isNotUpdateAvailable() {
+
+    }
+
+    override fun inAppUpdateFailure() {
+        if (BuildConfig.DEBUG) {
+            utils.moveNextActivity(
+                this,
+                Intent(this, MainActivity::class.java),
+                true
+            )
+        } else
+            inAppUpdateManager.checkUpdateAvailable()
     }
 
 

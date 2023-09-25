@@ -1,40 +1,42 @@
 package com.dev.pari.gcp.service_utils.inappupdate
 
-import android.content.Context
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import com.dev.pari.gcp.common.Constants
 import com.dev.pari.gcp.common.Utils
 import com.google.android.play.core.appupdate.AppUpdateInfo
+import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
 
-class InAppUpdateManager(context: Context, inAppUpdateCallBack: InAppUpdateCallBack) :
-    AppCompatActivity() {
+class InAppUpdateManager(
+    private val mContext: Activity,
+    private val updateCallBack: InAppUpdateCallBack
+) {
 
-    private val updateCallBack = inAppUpdateCallBack
-    private val mContext = context
     private val utils = Utils(mContext)
+    private val updateManager = AppUpdateManagerFactory.create(mContext)
+    private var updatePriority = 0
 
     fun checkUpdateAvailable() {
         try {
             if (Constants.isInAppUpdateEnabled) {
-                val updateManager = AppUpdateManagerFactory.create(mContext)
                 val updateInfoTask = updateManager.appUpdateInfo
                 if (Constants.needImmediateUpdate)
                     updateInfoTask.addOnSuccessListener {
+                        println("--->>> Priority --- ${it.updatePriority()}")
+                        updatePriority = it.updatePriority()
                         if (it.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && it.isUpdateTypeAllowed(
                                 AppUpdateType.IMMEDIATE
                             )
-                        ) {
-                            updateCallBack.isUpdateAvailable()
-                            requestAppUpdate(it, mContext)
-                        } else
+                        )
+                            requestAppUpdate(updateManager, it)
+                        else
                             updateCallBack.isNotUpdateAvailable()
                     }.addOnFailureListener {
-                        utils.shortToast(it.message)
                         println("--->>> In app update failure : ${it.message}")
                         updateCallBack.inAppUpdateFailure()
                     }
@@ -45,12 +47,10 @@ class InAppUpdateManager(context: Context, inAppUpdateCallBack: InAppUpdateCallB
                             && it.clientVersionStalenessDays()!! >= Constants.DAYS_FOR_FLEXIBLE_UPDATE
                             && it.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)
                         ) {
-                            updateCallBack.isUpdateAvailable()
-                            requestAppUpdate(it, mContext)
+                            requestAppUpdate(updateManager, it)
                         } else
                             updateCallBack.isNotUpdateAvailable()
                     }.addOnFailureListener {
-                        utils.shortToast(it.message)
                         println("--->>> In app update failure : ${it.message}")
                         updateCallBack.inAppUpdateFailure()
                     }
@@ -59,28 +59,20 @@ class InAppUpdateManager(context: Context, inAppUpdateCallBack: InAppUpdateCallB
                         " 'needFlexibleUpdate' and 'needImmediateUpdate' both variable value was present in false " +
                                 "kindly check 'Constants' file and change any one variable value is 'true'"
                     )
-
-                updateInfoTask.addOnFailureListener {
-                    utils.shortToast(it.message)
-                    println("---->>>>> ${it.message}")
-                    updateCallBack.inAppUpdateFailure()
-                }
             } else
                 throw RuntimeException(
                     " 'isInAppUpdateEnabled' variable value was present in false " +
                             "kindly check 'Constants' file and change a variable value is 'true'"
                 )
         } catch (e: Exception) {
-            utils.shortToast(e.message)
             e.printStackTrace()
             println("--->>>> In App Update Exception : " + e.message)
         }
 
     }
 
-    private fun requestAppUpdate(appUpdateInfo: AppUpdateInfo, context: Context) {
+    private fun requestAppUpdate(appUpdateManger: AppUpdateManager, appUpdateInfo: AppUpdateInfo) {
         try {
-            val updateManager = AppUpdateManagerFactory.create(context)
             val updateOption = if (Constants.needImmediateUpdate)
                 AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE)
                     .setAllowAssetPackDeletion(true)
@@ -94,34 +86,33 @@ class InAppUpdateManager(context: Context, inAppUpdateCallBack: InAppUpdateCallB
                     " 'needFlexibleUpdate' and 'needImmediateUpdate' both variable value was present in false " +
                             "kindly check 'Constants' file and change any one variable value is 'true'"
                 )
-
-            updateManager.startUpdateFlowForResult(
-                // Pass the intent that is returned by 'getAppUpdateInfo()'.
+            appUpdateManger.startUpdateFlowForResult(
                 appUpdateInfo,
-                // an activity result launcher registered via registerForActivityResult
-                activityResultLauncher,
-                // Or pass 'AppUpdateType.FLEXIBLE' to newBuilder() for
-                // flexible updates.
-                updateOption
+                AppUpdateType.IMMEDIATE,
+                mContext,
+                Constants.IN_APP_UPDATE_REQ_CODE
             )
         } catch (e: Exception) {
             e.printStackTrace()
-            utils.shortToast(e.message)
         }
     }
 
-    private val activityResultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
-            if (it.resultCode == RESULT_OK)
-                updateCallBack.inAppUpdateSuccess()
-            else
-                updateCallBack.inAppUpdateFailure()
+    fun onResume() {
+        updateManager.appUpdateInfo.addOnSuccessListener {
+            if (it.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                requestAppUpdate(updateManager, it)
+            }
         }
+    }
+
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == Constants.IN_APP_UPDATE_REQ_CODE)
+            if (resultCode != RESULT_OK)
+                updateCallBack.inAppUpdateFailure()
+    }
 
     interface InAppUpdateCallBack {
         fun isNotUpdateAvailable()
-        fun isUpdateAvailable()
-        fun inAppUpdateSuccess()
         fun inAppUpdateFailure()
     }
 }
