@@ -10,7 +10,6 @@ import com.dev.pari.gcp.databinding.ActivitySplashBinding
 import com.dev.pari.gcp.service_utils.inappupdate.InAppUpdateManager
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
-import com.intuit.sdp.BuildConfig
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -65,6 +64,16 @@ class SplashActivity : AppCompatActivity(), InAppUpdateManager.InAppUpdateCallBa
         )
     }
 
+    override fun onResume() {
+        super.onResume()
+        inAppUpdateManager.onResume()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        inAppUpdateManager.onActivityResult(requestCode, resultCode, data)
+    }
+
     override fun onStop() {
         super.onStop()
         splashTimer.dispose()
@@ -76,18 +85,19 @@ class SplashActivity : AppCompatActivity(), InAppUpdateManager.InAppUpdateCallBa
     }
 
     override fun isNotUpdateAvailable() {
-
+        utils.moveNextActivity(
+            this,
+            Intent(this, MainActivity::class.java),
+            true
+        )
     }
 
     override fun inAppUpdateFailure() {
-        if (BuildConfig.DEBUG) {
-            utils.moveNextActivity(
-                this,
-                Intent(this, MainActivity::class.java),
-                true
-            )
-        } else
-            inAppUpdateManager.checkUpdateAvailable()
+        utils.moveNextActivity(
+            this,
+            Intent(this, MainActivity::class.java),
+            true
+        )
     }
 
 

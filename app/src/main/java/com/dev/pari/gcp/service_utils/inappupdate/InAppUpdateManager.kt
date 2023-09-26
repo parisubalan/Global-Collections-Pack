@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import com.dev.pari.gcp.common.Constants
-import com.dev.pari.gcp.common.Utils
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -17,7 +16,6 @@ class InAppUpdateManager(
     private val updateCallBack: InAppUpdateCallBack
 ) {
 
-    private val utils = Utils(mContext)
     private val updateManager = AppUpdateManagerFactory.create(mContext)
     private var updatePriority = 0
 
@@ -34,8 +32,10 @@ class InAppUpdateManager(
                             )
                         )
                             requestAppUpdate(updateManager, it)
-                        else
+                        else if (it.updateAvailability() == UpdateAvailability.UPDATE_NOT_AVAILABLE)
                             updateCallBack.isNotUpdateAvailable()
+                        else if (it.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS)
+                            requestAppUpdate(updateManager, it)
                     }.addOnFailureListener {
                         println("--->>> In app update failure : ${it.message}")
                         updateCallBack.inAppUpdateFailure()
@@ -99,7 +99,10 @@ class InAppUpdateManager(
 
     fun onResume() {
         updateManager.appUpdateInfo.addOnSuccessListener {
-            if (it.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+            if (it.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && it.isUpdateTypeAllowed(
+                    AppUpdateType.IMMEDIATE
+                )
+            ) {
                 requestAppUpdate(updateManager, it)
             }
         }
@@ -108,7 +111,7 @@ class InAppUpdateManager(
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == Constants.IN_APP_UPDATE_REQ_CODE)
             if (resultCode != RESULT_OK)
-                updateCallBack.inAppUpdateFailure()
+                checkUpdateAvailable()
     }
 
     interface InAppUpdateCallBack {
