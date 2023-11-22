@@ -52,7 +52,25 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".activity.CardPaymentActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="myapp" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".activity.FileUploadActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.PhonePeActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
@@ -84,6 +102,23 @@
 
         <service android:name=".service_utils.android_service.SimpleBackgroundService" />
         <service android:name=".service_utils.android_service.SimpleForegroundService" />
+
+        <!--        PhonePe Meta Values  -->
+        <meta-data
+            android:name="com.phonepe.android.sdk.isUAT"
+            android:value="true" />
+        <meta-data
+            android:name="com.phonepe.android.sdk.isSimulator"
+            android:value="true" />
+
+        <meta-data
+            android:name="com.phonepe.android.sdk.MerchantId"
+            android:value="PGTESTPAYUAT" /> <!--Here add live merchantId-->
+
+        <meta-data
+            android:name="com.phonepe.android.sdk.AppId"
+            android:value="" /> <!--Here add live appId-->
+
 
     </application>
 

@@ -74,7 +74,7 @@ class FaceBookLoginUtils(private val mActivity: Activity) {
                 println("--->>>> Response $obj")
                 val id = obj?.getString("id")
                 val name = obj?.getString("name")
-                val email = obj?.getString("email")
+//                val email = obj?.getString("email") ?: ""
                 val profileImageUrl =
                     obj?.getJSONObject("picture")?.getJSONObject("data")?.get("url").toString()
 
@@ -85,9 +85,9 @@ class FaceBookLoginUtils(private val mActivity: Activity) {
                         isCancelled = false,
                         error = "",
                         accessToken = accessToken,
-                        userId = id!!,
-                        userName = name!!,
-                        email = email!!,
+                        userId = id,
+                        userName = name,
+                        email = "email",
                         profileImageUrl = profileImageUrl
                     )
                 )

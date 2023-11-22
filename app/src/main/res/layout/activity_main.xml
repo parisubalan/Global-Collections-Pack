@@ -12,70 +12,199 @@
         style="@style/BoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_5sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
         android:text="@string/lblServiceUtils"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="@dimen/_25sdp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/locationBtn"
-        style="@style/MediumText"
-        android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_5sdp"
-        android:text="@string/lblLocation"
-        android:textAllCaps="false"
-        android:textColor="@color/black" />
+        android:fillViewport="true"
+        >
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/inAppUpdateBtn"
-        style="@style/MediumText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_5sdp"
-        android:text="@string/lblInAppUpdate"
-        android:textAllCaps="false"
-        android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/inAppReviewBtn"
-        style="@style/MediumText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_5sdp"
-        android:text="@string/lblInAppReview"
-        android:textAllCaps="false"
-        android:textColor="@color/black" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:orientation="horizontal">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/socialMediaLoginBtn"
-        style="@style/MediumText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_5sdp"
-        android:text="@string/lblSocialLogin"
-        android:textAllCaps="false"
-        android:textColor="@color/black" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/inAppUpdateBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblInAppUpdate"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/androidServiceBtn"
-        style="@style/MediumText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_5sdp"
-        android:text="@string/lblAndroidService"
-        android:textAllCaps="false"
-        android:textColor="@color/black" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/inAppReviewBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblInAppReview"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+            </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/fileUploadBtn"
-        style="@style/MediumText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_5sdp"
-        android:text="@string/lblFileUpload"
-        android:textAllCaps="false"
-        android:textColor="@color/black" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/socialMediaLoginBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblSocialLogin"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/androidServiceBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblAndroidService"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/locationBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblLocation"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/fileUploadBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblFileUpload"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/paypalBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblPayPal"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/phonePayBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblPhonePe"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/workMangerBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblWorkManger"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/paginationBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblPagination"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/inAppPurchaseBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblInAppPurchase"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/youtubeApiBtn"
+                    style="@style/MediumText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="@string/lblYoutubeApi"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

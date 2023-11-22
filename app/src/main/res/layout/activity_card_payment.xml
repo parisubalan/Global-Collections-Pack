@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOrderId"
+        style="@style/BoldText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/createOrderBtn"
+            style="@style/MediumText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/lblCreateOrder"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/paypalBtn"
+            style="@style/MediumText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/lblPay"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</LinearLayout>

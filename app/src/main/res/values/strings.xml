@@ -28,4 +28,12 @@
     <string name="lblStartBgService">Start Service</string>
     <string name="lblStopBgService">Stop Service</string>
     <string name="lblForegroundService">Foreground Service</string>
+    <string name="lblWorkManger">Work Manager</string>
+    <string name="lblPagination">Pagination</string>
+    <string name="lblInAppPurchase">In App Purchase</string>
+    <string name="lblYoutubeApi">Youtube Api</string>
+    <string name="lblPayPal">PayPal</string>
+    <string name="lblPay">Pay</string>
+    <string name="lblCreateOrder">Create Order</string>
+    <string name="lblPhonePe">PhonePe</string>
 </resources>

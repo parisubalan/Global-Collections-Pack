@@ -8,12 +8,15 @@ import com.dev.pari.gcp.R
 import com.dev.pari.gcp.common.Utils
 import com.dev.pari.gcp.databinding.ActivityMainBinding
 import com.dev.pari.gcp.service_utils.inappreview.InAppReviewManager
+import com.dev.pari.gcp.service_utils.inappupdate.InAppUpdateManager
 
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener,
+    InAppUpdateManager.InAppUpdateCallBack {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var utils: Utils
+    private lateinit var inAppUpdateManager: InAppUpdateManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initialization() {
         utils = Utils(this)
+        inAppUpdateManager = InAppUpdateManager(this, this)
         utils.printHashKey(this)
         binding.locationBtn.setOnClickListener(this)
         binding.inAppUpdateBtn.setOnClickListener(this)
@@ -31,6 +35,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.socialMediaLoginBtn.setOnClickListener(this)
         binding.androidServiceBtn.setOnClickListener(this)
         binding.fileUploadBtn.setOnClickListener(this)
+        binding.paypalBtn.setOnClickListener(this)
+        binding.phonePayBtn.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -39,25 +45,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 utils.moveNextActivity(this, Intent(this, LocationActivity::class.java), false)
             }
 
+            R.id.phonePayBtn -> {
+                utils.moveNextActivity(this, Intent(this, PhonePeActivity::class.java), false)
+            }
+
             R.id.inAppUpdateBtn -> {
-                InAppUpdateManager(this, object : InAppUpdateManager.InAppUpdateCallBack {
-                    override fun isNotUpdateAvailable() {
-                        println("--->>>> isNotUpdateAvailable")
-                    }
-
-                    override fun isUpdateAvailable() {
-                        println("--->>>> isUpdateAvailable")
-                    }
-
-                    override fun inAppUpdateSuccess() {
-                        println("--->>>> inAppUpdateSuccess")
-                    }
-
-                    override fun inAppUpdateFailure() {
-                        println("--->>>> inAppUpdateFailure")
-                    }
-
-                }).checkUpdateAvailable()
+                inAppUpdateManager.checkUpdateAvailable()
             }
 
             R.id.inAppReviewBtn -> {
@@ -99,6 +92,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.fileUploadBtn -> {
                 utils.moveNextActivity(this, Intent(this, FileUploadActivity::class.java), false)
             }
+
+            R.id.paypalBtn -> {
+                utils.moveNextActivity(this, Intent(this, CardPaymentActivity::class.java), false)
+            }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        inAppUpdateManager.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun isNotUpdateAvailable() {
+
+    }
+
+    override fun inAppUpdateFailure() {
+
     }
 }
