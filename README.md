@@ -1,1 +1,2 @@
-# Global Collections
+# Service Utils
+It's an Android application repository that consolidates multiple essential modules, including social media login for easy authentication, various Work Manager tasks for efficient background services, in-app updates to keep users on the latest version, and in-app review integration for gathering user feedback. It also features Google location services for location-based functionalities and a payment gateway module for secure and seamless transactions, offering developers a comprehensive collection of utilities for faster and more efficient app development.
